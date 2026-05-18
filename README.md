@@ -8,7 +8,7 @@ Cozy Foodie / «Комфортная кулинария с Лисой» — web/
 
 - Repository: `79kqtc2xbf-jpg/Cozy_food_app`
 - GitHub Pages: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/`
-- Текущая проверочная версия: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable18-manual-top-steps`
+- Текущая проверочная версия: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable33-photo-stability-cleanup`
 
 ## Scope этого репозитория
 
@@ -48,9 +48,9 @@ Cozy Foodie / «Комфортная кулинария с Лисой» — web/
 
 ## Текущая техническая база
 
-Активная рабочая точка: `webstable18-manual-top-steps`.
+Активная рабочая точка: `webstable33-photo-stability-cleanup`.
 
-Основные подключаемые файлы в текущей базе:
+`index.html` сейчас подключает версию `webstable33-photo-stability-cleanup` для CSS и JS.
 
 ### CSS
 
@@ -68,6 +68,20 @@ Cozy Foodie / «Комфортная кулинария с Лисой» — web/
 - `v16-unique-cooking.js`
 - `v17-deeper-steps.js`
 - `v18-manual-top-steps.js`
+- `v19-manual-more-steps.js`
+- `v20-single-cooking-trick.js`
+- `v21-single-cooking-note.js`
+- `v23-clean-cooking-photo-rollback.js`
+- `v24-ux-cleanup.js`
+- `v25-polish-fixes.js`
+- `v26-cart-timer-sections.js`
+- `v27-logical-recipe-notes.js`
+- `v28-show-recipe-notes.js`
+- `v29-step-bullets.js`
+- `v30-clean-step-cards.js`
+- `v31-smart-step-bullets.js`
+- `v32-clean-stable-build.js`
+- `v33-photo-stability-cleanup.js`
 
 ### Data
 
@@ -80,7 +94,7 @@ Cozy Foodie / «Комфортная кулинария с Лисой» — web/
 Формат:
 
 - `v12`, `v13`, `v14` — рабочие патчи;
-- `webstable18-manual-top-steps` — стабильная web-точка;
+- `webstable33-photo-stability-cleanup` — текущая стабильная web-точка;
 - `ios fix`, `iphone lite`, `nuclear fix` — специальные iPhone/PWA-патчи;
 - `showcase` — версия для показа.
 
@@ -115,6 +129,6 @@ Cozy Foodie / «Комфортная кулинария с Лисой» — web/
 
 - Не создавать изображения без прямого разрешения Лизы.
 - Не смешивать технический патч с генерацией контента.
-- Не считать v19 завершённым, пока не проверено подключение в `index.html`.
+- v19 уже существует и подключён, но текущая рабочая точка — v33.
 - Не писать задачи в GitHub Issues без прямой просьбы.
 - Не ломать рабочую версию ради красивой идеи.
