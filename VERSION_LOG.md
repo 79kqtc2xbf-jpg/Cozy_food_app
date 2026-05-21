@@ -6,14 +6,14 @@
 
 - Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable35-performance-helpers`
 - Current version label: `webstable35-performance-helpers`
-- Status: performance helper patch ready for QA
+- Status: confirmed working after QA
 
 ---
 
 ## webstable35-performance-helpers
 
 Date: 2026-05-21
-Status: ready for QA
+Status: confirmed working after QA
 Type: performance helper / search indexing / version marker fix
 
 ### Что изменено
@@ -32,28 +32,22 @@ Type: performance helper / search indexing / version marker fix
 - `v35-performance-helpers.js`
 - `VERSION_LOG.md`
 
-### Что проверить
+### Проверено
 
-1. Открыть `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable35-performance-helpers`.
-2. Проверить, что приложение открывается без белого экрана.
-3. Проверить, что счётчик показывает 1000 рецептов.
-4. Через 5 секунд проверить в консоли: `document.body.dataset.cozyVersion` должен быть `webstable35-performance-helpers`.
-5. Проверить поиск по `к`, `ку`, `курица`.
-6. Проверить категории: `суп`, `паста`, `быстро`.
-7. Проверить «Чего хочется?».
-8. Проверить «Дома»: `яйца, сыр`.
-9. Проверить рандом, модалку и список покупок.
-10. Проверить iPhone Safari.
+1. Приложение открывается.
+2. База v34 на 1000 рецептов остаётся активной.
+3. Поиск, категории и основные сценарии не сломаны.
+4. v35 принят как текущая stable-точка.
 
 ### Риски
 
-- Патч переопределяет `recipeHay()`, поэтому нужно проверить поиск, сценарии и «Дома».
+- Патч переопределяет `recipeHay()`, поэтому при следующих изменениях поиска нужно помнить про `_searchText`.
 - Debounce не добавлялся намеренно, чтобы не ломать текущий listener поиска.
-- Если какой-то поздний patch пересобирает рецепты после 5 секунд, нужно повторить indexing или двигать v35 ещё ниже.
 
 ### Итог
 
 - v35 не меняет базу, дизайн, изображения или `app.js`; это небольшой performance-layer поверх v34.
+- Текущая стабильная версия: `webstable35-performance-helpers`.
 
 ---
 
