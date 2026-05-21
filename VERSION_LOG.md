@@ -4,9 +4,59 @@
 
 ## Текущая рабочая точка
 
-- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable35-performance-helpers`
-- Current version label: `webstable35-performance-helpers`
-- Status: confirmed working after QA
+- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable36-cleaned-recipes`
+- Current version label: `webstable36-cleaned-recipes`
+- Status: cleaned content database ready for QA; v35 performance layer remains last
+
+---
+
+## webstable36-cleaned-recipes
+
+Date: 2026-05-22
+Status: ready for QA, not committed
+Type: cleaned content database / safe recipe loader
+
+### Что изменено
+
+- Создан `recipes-v36-cleaned.json` на основе `recipes-v34-1000.json`.
+- Сохранены 1000 рецептов и id `v34_0001` ... `v34_1000`, чтобы не ломать избранное, историю и ссылки.
+- Исправлены механические названия, странные сочетания, no-fire формулировки и дубли по `ingredients + steps`.
+- Создан `v36-cleaned-recipes-loader.js`.
+- `index.html` поднят на query version `webstable36-cleaned-recipes`.
+- `v36-cleaned-recipes-loader.js` подключён после `v34-recipes-1000-loader.js` и до `v16-unique-cooking.js`.
+- `v35-performance-helpers.js` оставлен последним слоем.
+- `app.js` не трогали.
+- `styles.css` не трогали.
+- Изображения не трогали.
+- Дизайн и UX-copy не меняли.
+- `recipes-v34-1000.json` сохранён как technical checkpoint и не редактировался.
+
+### Затронутые файлы
+
+- `index.html`
+- `recipes-v36-cleaned.json`
+- `v36-cleaned-recipes-loader.js`
+- `VERSION_LOG.md`
+- `NEXT_STEPS.md`
+
+### Что проверить
+
+1. Открыть `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable36-cleaned-recipes`.
+2. Проверить, что приложение открывается без белого экрана.
+3. Проверить, что загружается очищенная база на 1000 рецептов.
+4. Открыть первые, средние и последние рецепты.
+5. Проверить поиск, категории, «Чего хочется?», «Дома», рандом, избранное и историю.
+6. Проверить iPhone Safari без старого PWA-кэша.
+
+### Риски
+
+- База очищена массово, поэтому полезна ручная вычитка первых экранов и популярных категорий.
+- Возможен старый кэш GitHub Pages / Safari / PWA.
+
+### Итог
+
+- v36 делает content cleanup базы рецептов без изменения ядра приложения, стилей, изображений и UX-copy.
+- v35 performance-layer остаётся последним.
 
 ---
 
