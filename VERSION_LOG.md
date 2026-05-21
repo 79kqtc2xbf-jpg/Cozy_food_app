@@ -4,16 +4,64 @@
 
 ## Текущая рабочая точка
 
-- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable33-photo-stability-cleanup`
-- Current version label: `webstable33-photo-stability-cleanup`
+- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable34-recipes-1000`
+- Current version label: `webstable34-recipes-1000`
 - Status: current stable checkpoint based on `index.html` connections
+
+---
+
+## webstable34-recipes-1000
+
+Date: 2026-05-21
+Status: technical patch ready for QA
+Type: recipe database expansion / race-safe loader
+
+### Что изменено
+
+- Создан `recipes-v34-1000.json`.
+- Создан `v34-recipes-1000-loader.js`.
+- База расширена до 1000 рецептов в текущей схеме Cozy Foodie.
+- `index.html` поднят на query version `webstable34-recipes-1000`.
+- `v34-recipes-1000-loader.js` подключён сразу после `v15-recipes-loader.js` и до патчей отображения/шагов.
+- `app.js` не трогали.
+- Изображения не трогали.
+- Дизайн и UX-copy не меняли.
+- v34 loader защищён от race condition: JSON fetch выполняется один раз, а загруженная база повторно применяется сразу, на `window.load`, через 400 мс, 1200 мс и 2500 мс.
+
+### Затронутые файлы
+
+- `index.html`
+- `recipes-v34-1000.json`
+- `v34-recipes-1000-loader.js`
+- `VERSION_LOG.md`
+- `NEXT_STEPS.md`
+
+### Что проверить
+
+1. Открыть `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable34-recipes-1000`.
+2. Проверить, что приложение открывается без белого экрана.
+3. Проверить, что счётчик рецептов показывает около 1000 рецептов плюс пользовательские локальные рецепты, если они есть.
+4. Открыть несколько рецептов из начала, середины и конца базы.
+5. Проверить поиск, категории, «Чего хочется?», «Дома», рандом и список покупок.
+6. Проверить iPhone Safari без старого PWA-кэша.
+
+### Риски
+
+- 1000 рецептов фильтруются на клиенте, поэтому нужно проверить скорость поиска на iPhone.
+- В базе много рецептов, качество контента нужно выборочно вычитать после технической проверки.
+- Старый `v34-pretty-fallback-cards.js` существует в репозитории, но не подключён в `index.html`.
+- Возможен старый кэш GitHub Pages / Safari / PWA, как и в предыдущих webstable-патчах.
+
+### Итог
+
+- v34 технически расширяет базу до 1000 рецептов без изменения ядра приложения.
 
 ---
 
 ## webstable33-photo-stability-cleanup
 
 Date: 2026-05-19
-Status: current stable checkpoint
+Status: previous stable checkpoint
 Type: photo stability / cleanup guard
 
 ### Что изменено
