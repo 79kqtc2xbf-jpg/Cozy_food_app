@@ -44,8 +44,8 @@
 
 ## Current stable checkpoint
 
-- Version: `webstable18-manual-top-steps`
-- URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable18-manual-top-steps`
+- Version: `webstable33-photo-stability-cleanup`
+- URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable33-photo-stability-cleanup`
 - Repo: `79kqtc2xbf-jpg/Cozy_food_app`
 - Branch: `main`
 
@@ -77,6 +77,20 @@ Current setup uses base files plus layered patch files.
 - `v16-unique-cooking.js`
 - `v17-deeper-steps.js`
 - `v18-manual-top-steps.js`
+- `v19-manual-more-steps.js`
+- `v20-single-cooking-trick.js`
+- `v21-single-cooking-note.js`
+- `v23-clean-cooking-photo-rollback.js`
+- `v24-ux-cleanup.js`
+- `v25-polish-fixes.js`
+- `v26-cart-timer-sections.js`
+- `v27-logical-recipe-notes.js`
+- `v28-show-recipe-notes.js`
+- `v29-step-bullets.js`
+- `v30-clean-step-cards.js`
+- `v31-smart-step-bullets.js`
+- `v32-clean-stable-build.js`
+- `v33-photo-stability-cleanup.js`
 
 ### Current data
 
@@ -154,18 +168,36 @@ For a patch, include:
 
 - Manual detailed improvements for top recipes.
 
-### v19 planned
+### v19 manual more steps
 
-- Started but not verified.
-- Must not be considered complete until file presence, index connection and site behavior are checked.
+- Exists in repository.
+- Connected in `index.html`.
+- Adds more manual steps for selected recipes.
+- Not the current final checkpoint anymore.
+
+### v20–v32
+
+- Additional cleanup / UX / cart / timer / recipe note / step card / stable build layers.
+- Keep connected order unless reviewing the full chain intentionally.
+
+### v33 photo stability cleanup
+
+- Current stable checkpoint.
+- Rolls back unstable stock photo sources to cozy fallback.
+- Adds `CF33_VERSION = "webstable33-photo-stability-cleanup"`.
+- Final patch layer in current `index.html`.
 
 ## Next best technical action
 
-Run a repository review for:
+Manual QA of current v33:
 
-1. `index.html`;
-2. `v19-manual-more-steps.js`;
-3. current CSS/JS connections;
-4. GitHub Pages current behavior.
+1. Open GitHub Pages v33 URL.
+2. Check app load.
+3. Check first recipe cards.
+4. Check modal opening.
+5. Check timers.
+6. Check shopping list.
+7. Check image fallback.
+8. Check iPhone Safari cache behavior.
 
-Then decide whether to complete v19 or keep stable v18.
+If QA passes, keep v33 as current stable. If QA finds a bug, create v34 as a small targeted patch.
