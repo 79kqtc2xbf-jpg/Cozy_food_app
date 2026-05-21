@@ -4,16 +4,63 @@
 
 ## Текущая рабочая точка
 
-- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable34-recipes-1000`
-- Current version label: `webstable34-recipes-1000`
-- Status: current stable checkpoint based on `index.html` connections
+- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable35-performance-helpers`
+- Current version label: `webstable35-performance-helpers`
+- Status: performance helper patch ready for QA
+
+---
+
+## webstable35-performance-helpers
+
+Date: 2026-05-21
+Status: ready for QA
+Type: performance helper / search indexing / version marker fix
+
+### Что изменено
+
+- Создан `v35-performance-helpers.js`.
+- `index.html` поднят на query version `webstable35-performance-helpers`.
+- `v35-performance-helpers.js` подключён последним, после `v33-photo-stability-cleanup.js`.
+- Добавлен кэш поискового текста рецепта в `recipe._searchText`.
+- `recipeHay()` переопределён так, чтобы использовать кэшированный `_searchText`.
+- Добавлен повторный indexing после загрузки и через 400 / 1200 / 2500 / 5000 ms.
+- Исправлен version marker: `document.body.dataset.cozyVersion` должен оставаться `webstable35-performance-helpers` после поздних таймеров.
+
+### Затронутые файлы
+
+- `index.html`
+- `v35-performance-helpers.js`
+- `VERSION_LOG.md`
+
+### Что проверить
+
+1. Открыть `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable35-performance-helpers`.
+2. Проверить, что приложение открывается без белого экрана.
+3. Проверить, что счётчик показывает 1000 рецептов.
+4. Через 5 секунд проверить в консоли: `document.body.dataset.cozyVersion` должен быть `webstable35-performance-helpers`.
+5. Проверить поиск по `к`, `ку`, `курица`.
+6. Проверить категории: `суп`, `паста`, `быстро`.
+7. Проверить «Чего хочется?».
+8. Проверить «Дома»: `яйца, сыр`.
+9. Проверить рандом, модалку и список покупок.
+10. Проверить iPhone Safari.
+
+### Риски
+
+- Патч переопределяет `recipeHay()`, поэтому нужно проверить поиск, сценарии и «Дома».
+- Debounce не добавлялся намеренно, чтобы не ломать текущий listener поиска.
+- Если какой-то поздний patch пересобирает рецепты после 5 секунд, нужно повторить indexing или двигать v35 ещё ниже.
+
+### Итог
+
+- v35 не меняет базу, дизайн, изображения или `app.js`; это небольшой performance-layer поверх v34.
 
 ---
 
 ## webstable34-recipes-1000
 
 Date: 2026-05-21
-Status: technical patch ready for QA
+Status: confirmed working after QA
 Type: recipe database expansion / race-safe loader
 
 ### Что изменено
@@ -28,33 +75,9 @@ Type: recipe database expansion / race-safe loader
 - Дизайн и UX-copy не меняли.
 - v34 loader защищён от race condition: JSON fetch выполняется один раз, а загруженная база повторно применяется сразу, на `window.load`, через 400 мс, 1200 мс и 2500 мс.
 
-### Затронутые файлы
-
-- `index.html`
-- `recipes-v34-1000.json`
-- `v34-recipes-1000-loader.js`
-- `VERSION_LOG.md`
-- `NEXT_STEPS.md`
-
-### Что проверить
-
-1. Открыть `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable34-recipes-1000`.
-2. Проверить, что приложение открывается без белого экрана.
-3. Проверить, что счётчик рецептов показывает около 1000 рецептов плюс пользовательские локальные рецепты, если они есть.
-4. Открыть несколько рецептов из начала, середины и конца базы.
-5. Проверить поиск, категории, «Чего хочется?», «Дома», рандом и список покупок.
-6. Проверить iPhone Safari без старого PWA-кэша.
-
-### Риски
-
-- 1000 рецептов фильтруются на клиенте, поэтому нужно проверить скорость поиска на iPhone.
-- В базе много рецептов, качество контента нужно выборочно вычитать после технической проверки.
-- Старый `v34-pretty-fallback-cards.js` существует в репозитории, но не подключён в `index.html`.
-- Возможен старый кэш GitHub Pages / Safari / PWA, как и в предыдущих webstable-патчах.
-
 ### Итог
 
-- v34 технически расширяет базу до 1000 рецептов без изменения ядра приложения.
+- v34 технически расширила базу до 1000 рецептов без изменения ядра приложения.
 
 ---
 
@@ -72,32 +95,10 @@ Type: photo stability / cleanup guard
 - В коде v33 есть защита от повторного применения через `window.CF33_PHOTO_STABILITY_CLEANUP_APPLIED`.
 - v33 помечает body как `cf33-photo-stability-cleanup` и записывает `data-cozy-version`.
 
-### Затронутые файлы
-
-- `index.html`
-- `v33-photo-stability-cleanup.js`
-
-### Что проверить
-
-1. Открыть `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable33-photo-stability-cleanup`.
-2. Проверить, что приложение открывается.
-3. Проверить первые карточки рецептов.
-4. Проверить, что плохие stock-фото заменяются fallback.
-5. Проверить, что fallback не ломает карточку и модалку.
-6. Проверить iPhone Safari.
-7. Проверить, что старая PWA-иконка не отдаёт старую версию.
-
-### Риски
-
-- Нужно проверить фактическое поведение на GitHub Pages и iPhone Safari.
-- Возможен старый кэш service worker.
-- Версионные документы были обновлены после обнаружения, что актуальная версия уже v33, а не v18/v19.
-
 ---
 
 ## v19-manual-more-steps
 
-Date: before current documentation update
 Status: exists and connected
 Type: manual recipe steps patch
 
@@ -107,19 +108,11 @@ Type: manual recipe steps patch
 - Файл подключён в `index.html`.
 - Он добавляет `CF19_MANUAL_MORE_STEPS` для части рецептов.
 - Он патчит `normalizeRecipe` и применяет ручные шаги к рецептам.
-- Он выставляет `window.CF19_VERSION = "webstable19-manual-more-steps"`, но более поздние патчи поднимают текущую версию дальше.
-
-### Итог
-
-- v19 не является текущей рабочей точкой.
-- v19 не нужно завершать отдельно.
-- Текущая рабочая точка — v33.
 
 ---
 
 ## webstable18-manual-top-steps
 
-Date: earlier checkpoint
 Status: historical checkpoint
 Type: stable web / manual recipe steps patch
 
