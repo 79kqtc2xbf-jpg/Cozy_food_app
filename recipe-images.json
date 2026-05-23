@@ -1,0 +1,11 @@
+{
+  "version": "webstable38-image-pipeline",
+  "basePath": "images/recipes/",
+  "format": "webp",
+  "recipes": {},
+  "notes": [
+    "Add image mappings only after files are uploaded.",
+    "Recommended path format: images/recipes/v34_0001.webp",
+    "Keep this file small and append images in batches: featured first, then scenarios, then categories."
+  ]
+}
