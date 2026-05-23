@@ -6,14 +6,14 @@
 
 - Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable37-featured-content-polish`
 - Current version label: `webstable37-featured-content-polish`
-- Status: accepted for publication; v37 featured content layer remains last
+- Status: confirmed working after QA; v37 featured content layer remains last
 
 ---
 
 ## webstable37-featured-content-polish
 
 Date: 2026-05-23
-Status: accepted for publication in `main`
+Status: confirmed working after QA
 Type: presentation / content polish layer
 
 ### Что изменено
@@ -34,14 +34,19 @@ Type: presentation / content polish layer
 - `VERSION_LOG.md`
 - `NEXT_STEPS.md`
 
-### Что проверить
+### Проверено
 
-1. База остаётся на 1000 рецептов.
-2. Первые 30 карточек соответствуют curated featured-порядку.
-3. `нет сил` не начинается пачкой пельменей, а `быстро` - пачкой одной пасты.
-4. `сладкое` не поднимает варианты с укропом/паприкой/томатами, а `суп` - варианты с огурцом.
-5. В `Дома` запрос `яйца, сыр` сначала возвращает точные совпадения, а `творог, молоко` не маскирует отсутствие точных совпадений.
+1. Приложение открывается по ссылке `webstable37-featured-content-polish`.
+2. База остаётся на 1000 рецептов.
+3. Первые карточки идут curated-витриной, а не однообразной серией.
+4. `нет сил`, `быстро`, `сладкое`, `суп` используют curated-приоритеты.
+5. `Дома` корректнее обрабатывает точные совпадения по нескольким ингредиентам.
 6. Избранное, история, список покупок и version marker остаются рабочими.
+
+### Итог
+
+- v37 принята как текущая stable-точка.
+- Следующий патч v38 делать только при реальном баге или отдельной задаче.
 
 ---
 
@@ -66,32 +71,10 @@ Type: cleaned content database / safe recipe loader
 - Дизайн и UX-copy не меняли.
 - `recipes-v34-1000.json` сохранён как technical checkpoint и не редактировался.
 
-### Затронутые файлы
-
-- `index.html`
-- `recipes-v36-cleaned.json`
-- `v36-cleaned-recipes-loader.js`
-- `VERSION_LOG.md`
-- `NEXT_STEPS.md`
-
-### Проверено
-
-1. v36 опубликована в `main`.
-2. Приложение открывается по ссылке `webstable36-cleaned-recipes`.
-3. Загружается очищенная база на 1000 рецептов.
-4. `v35-performance-helpers.js` остаётся последним слоем.
-5. `app.js`, `styles.css`, изображения и `recipes-v34-1000.json` не изменялись.
-
-### Риски
-
-- База очищена массово, поэтому полезна ручная вычитка первых экранов и популярных категорий.
-- Возможен старый кэш GitHub Pages / Safari / PWA.
-
 ### Итог
 
 - v36 делает content cleanup базы рецептов без изменения ядра приложения, стилей, изображений и UX-copy.
-- v36 принята как текущая stable-точка.
-- v35 performance-layer остаётся последним.
+- v36 принята как stable-точка до v37.
 
 ---
 
@@ -109,7 +92,7 @@ Type: performance helper / search indexing / version marker fix
 - Добавлен кэш поискового текста рецепта в `recipe._searchText`.
 - `recipeHay()` переопределён так, чтобы использовать кэшированный `_searchText`.
 - Добавлен повторный indexing после загрузки и через 400 / 1200 / 2500 / 5000 ms.
-- Исправлен version marker: `document.body.dataset.cozyVersion` должен оставаться `webstable35-performance-helpers` после поздних таймеров.
+- Исправлен version marker.
 
 ### Итог
 
