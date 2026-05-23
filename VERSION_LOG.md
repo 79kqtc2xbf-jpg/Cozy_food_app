@@ -6,14 +6,14 @@
 
 - Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable36-cleaned-recipes`
 - Current version label: `webstable36-cleaned-recipes`
-- Status: cleaned content database ready for QA; v35 performance layer remains last
+- Status: confirmed working after QA; v35 performance layer remains last
 
 ---
 
 ## webstable36-cleaned-recipes
 
 Date: 2026-05-22
-Status: ready for QA, not committed
+Status: confirmed working after QA
 Type: cleaned content database / safe recipe loader
 
 ### Что изменено
@@ -39,14 +39,13 @@ Type: cleaned content database / safe recipe loader
 - `VERSION_LOG.md`
 - `NEXT_STEPS.md`
 
-### Что проверить
+### Проверено
 
-1. Открыть `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable36-cleaned-recipes`.
-2. Проверить, что приложение открывается без белого экрана.
-3. Проверить, что загружается очищенная база на 1000 рецептов.
-4. Открыть первые, средние и последние рецепты.
-5. Проверить поиск, категории, «Чего хочется?», «Дома», рандом, избранное и историю.
-6. Проверить iPhone Safari без старого PWA-кэша.
+1. v36 опубликована в `main`.
+2. Приложение открывается по ссылке `webstable36-cleaned-recipes`.
+3. Загружается очищенная база на 1000 рецептов.
+4. `v35-performance-helpers.js` остаётся последним слоем.
+5. `app.js`, `styles.css`, изображения и `recipes-v34-1000.json` не изменялись.
 
 ### Риски
 
@@ -56,6 +55,7 @@ Type: cleaned content database / safe recipe loader
 ### Итог
 
 - v36 делает content cleanup базы рецептов без изменения ядра приложения, стилей, изображений и UX-copy.
+- v36 принята как текущая stable-точка.
 - v35 performance-layer остаётся последним.
 
 ---
@@ -76,28 +76,9 @@ Type: performance helper / search indexing / version marker fix
 - Добавлен повторный indexing после загрузки и через 400 / 1200 / 2500 / 5000 ms.
 - Исправлен version marker: `document.body.dataset.cozyVersion` должен оставаться `webstable35-performance-helpers` после поздних таймеров.
 
-### Затронутые файлы
-
-- `index.html`
-- `v35-performance-helpers.js`
-- `VERSION_LOG.md`
-
-### Проверено
-
-1. Приложение открывается.
-2. База v34 на 1000 рецептов остаётся активной.
-3. Поиск, категории и основные сценарии не сломаны.
-4. v35 принят как текущая stable-точка.
-
-### Риски
-
-- Патч переопределяет `recipeHay()`, поэтому при следующих изменениях поиска нужно помнить про `_searchText`.
-- Debounce не добавлялся намеренно, чтобы не ломать текущий listener поиска.
-
 ### Итог
 
 - v35 не меняет базу, дизайн, изображения или `app.js`; это небольшой performance-layer поверх v34.
-- Текущая стабильная версия: `webstable35-performance-helpers`.
 
 ---
 
@@ -117,7 +98,7 @@ Type: recipe database expansion / race-safe loader
 - `app.js` не трогали.
 - Изображения не трогали.
 - Дизайн и UX-copy не меняли.
-- v34 loader защищён от race condition: JSON fetch выполняется один раз, а загруженная база повторно применяется сразу, на `window.load`, через 400 мс, 1200 мс и 2500 мс.
+- v34 loader защищён от race condition.
 
 ### Итог
 
@@ -136,8 +117,6 @@ Type: photo stability / cleanup guard
 - Текущая активная версия в `index.html` поднята до `webstable33-photo-stability-cleanup`.
 - Подключён финальный слой `v33-photo-stability-cleanup.js`.
 - v33 делает rollback нестабильных stock-фото в безопасный cozy fallback.
-- В коде v33 есть защита от повторного применения через `window.CF33_PHOTO_STABILITY_CLEANUP_APPLIED`.
-- v33 помечает body как `cf33-photo-stability-cleanup` и записывает `data-cozy-version`.
 
 ---
 
@@ -175,35 +154,3 @@ Type: stable web / manual recipe steps patch
 - Отдельный поиск.
 - Плавающий рандом только на главной.
 - Fallback для картинок.
-
----
-
-## Шаблон новой версии
-
-```markdown
-## [version-name]
-
-Date:
-Status:
-Type:
-
-### Что изменено
-
-- 
-
-### Затронутые файлы
-
-- 
-
-### Что проверить
-
-1. 
-
-### Риски
-
-- 
-
-### Итог
-
-- 
-```
