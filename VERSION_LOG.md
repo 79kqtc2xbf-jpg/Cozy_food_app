@@ -4,9 +4,44 @@
 
 ## Текущая рабочая точка
 
-- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable36-cleaned-recipes`
-- Current version label: `webstable36-cleaned-recipes`
-- Status: confirmed working after QA; v35 performance layer remains last
+- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable37-featured-content-polish`
+- Current version label: `webstable37-featured-content-polish`
+- Status: accepted for publication; v37 featured content layer remains last
+
+---
+
+## webstable37-featured-content-polish
+
+Date: 2026-05-23
+Status: accepted for publication in `main`
+Type: presentation / content polish layer
+
+### Что изменено
+
+- Создан `v37-featured-content-polish.js` и подключён последним, после `v35-performance-helpers.js`.
+- Добавлен curated-порядок первых 30 рецептов для главной.
+- Добавлены приоритетные подборки для `нет сил`, `быстро`, `суп`, `сладкое`, а также порядок для фильтров `завтрак` и `ужин`.
+- Слабые рецепты не удаляются, но опускаются ниже в видимой выдаче.
+- Для curated/weak-рецептов через JS override смягчены машинные финальные шаги; отдельные странные названия и два несоответствующих сладких ингредиентных набора исправлены только на уровне отображения.
+- При overrides пересчитывается `_searchText`, чтобы оставаться совместимым с кэшем v35.
+- В `Дома` точные совпадения по всем введённым ингредиентам показываются первыми; при нескольких ингредиентах без точного совпадения случайные partial-рецепты не показываются.
+- `recipes-v36-cleaned.json`, `recipes-v34-1000.json`, `app.js`, `styles.css` и изображения не менялись.
+
+### Затронутые файлы
+
+- `index.html`
+- `v37-featured-content-polish.js`
+- `VERSION_LOG.md`
+- `NEXT_STEPS.md`
+
+### Что проверить
+
+1. База остаётся на 1000 рецептов.
+2. Первые 30 карточек соответствуют curated featured-порядку.
+3. `нет сил` не начинается пачкой пельменей, а `быстро` - пачкой одной пасты.
+4. `сладкое` не поднимает варианты с укропом/паприкой/томатами, а `суп` - варианты с огурцом.
+5. В `Дома` запрос `яйца, сыр` сначала возвращает точные совпадения, а `творог, молоко` не маскирует отсутствие точных совпадений.
+6. Избранное, история, список покупок и version marker остаются рабочими.
 
 ---
 
