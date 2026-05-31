@@ -4,10 +4,10 @@
 
 ## Срочно
 
-### 1. Проверить stable v37 после публикации
+### 1. Проверить stable v38 после публикации
 
 URL:
-`https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable37-featured-content-polish`
+`https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable38-image-pipeline`
 
 Проверить:
 
@@ -16,45 +16,48 @@ URL:
 3. Рецепты открываются.
 4. Таймеры запускаются.
 5. Звук таймера работает.
-6. «Чего хочется?» показывает curated-приоритеты для `нет сил`, `быстро`, `суп` и `сладкое`.
+6. «Чего хочется?» показывает curated-приоритеты v37 для `нет сил`, `быстро`, `суп` и `сладкое`.
 7. «Дома» ставит точные совпадения выше и честно показывает отсутствие совпадений для `творог, молоко`.
 8. Рандом работает.
 9. Очищенная база содержит 1000 рецептов, а первые 30 карточек следуют featured-порядку v37.
-10. На iPhone Safari не отдаётся старая версия.
+10. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
+11. Картинок пока нет, но fallback не ломается.
+12. На iPhone Safari не отдаётся старая версия.
 
-### 2. Проверить `index.html` после v37
+### 2. Проверить `index.html` после v38
 
 Уже подтверждено:
 
-- `index.html` подключает `webstable37-featured-content-polish`.
+- `index.html` подключает `webstable38-image-pipeline`.
 - `recipes-v34-1000.json` сохранён как technical checkpoint.
 - `recipes-v36-cleaned.json` создан отдельным файлом.
 - `recipes-v36-cleaned.json`, `app.js`, `styles.css` и изображения не трогали.
 - `v19-manual-more-steps.js` существует.
 - `v19-manual-more-steps.js` подключён.
-- `v37-featured-content-polish.js` подключён последним, после `v35-performance-helpers.js`.
-- Текущая stable-точка — v37; публикация подтверждена.
+- `v37-featured-content-polish.js` подключён после `v35-performance-helpers.js`.
+- `v38-recipe-images-loader.js` подключён сразу после `v37-featured-content-polish.js`.
+- Текущая stable-точка — v38 image pipeline.
 
 Дополнительно проверить:
 
 1. Нет ли конфликтов порядка JS-файлов.
-2. Финальный слой `v37-featured-content-polish.js` идёт последним.
+2. Финальный слой `v38-recipe-images-loader.js` идёт последним.
 3. Все подключённые файлы реально существуют.
 4. GitHub Pages отдаёт свежий `index.html`.
 
 ## Текущий технический патч
 
-### v37-featured-content-polish
+### v38-image-pipeline
 
-Цель: добавить presentation/content polish слой поверх v36 без редактирования исходного JSON.
+Цель: подключить image pipeline поверх v37 без редактирования исходного JSON, стилей, приложения и изображений.
 
 Что проверить после публикации:
 
-1. Featured-порядок главной.
-2. Curated-приоритеты сценариев и фильтров.
-3. Опускание weak IDs без удаления рецептов.
-4. Title/ingredients/steps overrides и обновлённый `_searchText`.
-5. Точные совпадения в «Дома».
+1. Приложение открывается.
+2. База остаётся на 1000 рецептов.
+3. Featured-порядок главной v37 сохраняется.
+4. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
+5. Картинок пока нет, но fallback не ломается.
 6. Отсутствие изменений в базе, ядре, стилях и изображениях.
 
 ## После QA v36

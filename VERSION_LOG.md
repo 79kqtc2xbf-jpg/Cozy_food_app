@@ -4,9 +4,43 @@
 
 ## Текущая рабочая точка
 
-- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable37-featured-content-polish`
-- Current version label: `webstable37-featured-content-polish`
-- Status: confirmed working after QA; v37 featured content layer remains last
+- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable38-image-pipeline`
+- Current version label: `webstable38-image-pipeline`
+- Status: v38 image pipeline connected; fallback verified, images not populated yet
+
+---
+
+## webstable38-image-pipeline
+
+Date: 2026-05-31
+Status: connected and locally verified
+Type: image pipeline loader / fallback-safe layer
+
+### Что изменено
+
+- `index.html` поднят на query version `webstable38-image-pipeline`.
+- После `v37-featured-content-polish.js` подключён `v38-recipe-images-loader.js`.
+- v37 featured-витрина оставлена рабочей; v38 идёт поверх неё только как image pipeline.
+- `app.js`, `styles.css`, JSON-базы и изображения не менялись.
+
+### Затронутые файлы
+
+- `index.html`
+- `VERSION_LOG.md`
+- `NEXT_STEPS.md`
+
+### Проверено
+
+1. Приложение открывается.
+2. База остаётся на 1000 рецептов.
+3. v37 витрина остаётся рабочей.
+4. `document.body.dataset.cozyImageLayer` выставляется в `webstable38-image-pipeline`.
+5. Картинок пока нет, но fallback не ломается.
+
+### Итог
+
+- v38 подключена как текущая stable-точка для image pipeline.
+- Следующий шаг: после появления реального image manifest проверить наполнение картинок без изменения fallback.
 
 ---
 
