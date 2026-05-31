@@ -10,6 +10,42 @@
 
 ---
 
+## webstable39-image-asset-automation
+
+Date: 2026-05-31
+Status: tooling added, not app stable
+Type: image asset automation tools / manifest helper
+
+### Что изменено
+
+- Добавлен `scripts/slice_recipe_collage.py` для нарезки AI-коллажей по сетке в отдельные `.webp` файлы.
+- Добавлен `scripts/update_recipe_image_manifest.py` для безопасного обновления `recipe-images.json`.
+- Добавлен `IMAGE_ASSET_WORKFLOW.md` с русской инструкцией по генерации clean collage, нарезке, обновлению manifest и проверке.
+- Current stable не менялся: приложение остаётся на `webstable38-image-pipeline`.
+- `app.js`, `styles.css`, `index.html`, JSON-базы рецептов, дизайн и изображения не менялись.
+
+### Затронутые файлы
+
+- `scripts/slice_recipe_collage.py`
+- `scripts/update_recipe_image_manifest.py`
+- `IMAGE_ASSET_WORKFLOW.md`
+- `VERSION_LOG.md`
+- `NEXT_STEPS.md`
+
+### Проверить
+
+1. `python3 -m py_compile scripts/slice_recipe_collage.py`
+2. `python3 -m py_compile scripts/update_recipe_image_manifest.py`
+3. Dry-run нарезки на несуществующем файле даёт понятную ошибку без traceback.
+4. Manifest dry-run с fake id работает только с `--allow-missing`.
+
+### Итог
+
+- v39 готовит автоматизацию ассетов, но не активирует новые картинки само по себе.
+- Для активации картинок нужно отдельно сгенерировать clean collage, нарезать `.webp`, обновить `recipe-images.json` и проверить v38 image pipeline.
+
+---
+
 ## webstable38-image-pipeline
 
 Date: 2026-05-31

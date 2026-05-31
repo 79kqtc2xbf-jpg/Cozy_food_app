@@ -4,6 +4,16 @@
 
 ## Срочно
 
+### 0. Подготовить первые image assets через v39 tooling
+
+1. Сгенерировать clean collage без подписей, labels, watermark и рук.
+2. Сохранить коллаж в `assets/collages/featured_batch_01.png`.
+3. Нарезать через `scripts/slice_recipe_collage.py` в `images/recipes/`.
+4. Обновить `recipe-images.json` через `scripts/update_recipe_image_manifest.py`.
+5. Проверить локально первые 20 картинок.
+6. Убедиться, что остальные рецепты остаются на fallback и не ломаются.
+7. После проверки сделать отдельный commit только с `.webp` ассетами и `recipe-images.json`.
+
 ### 1. Проверить stable v38 после публикации
 
 URL:
