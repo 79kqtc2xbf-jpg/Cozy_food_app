@@ -4,7 +4,7 @@
 
 ## Current known risks
 
-### 1. Проверить фактическую работу v38 на GitHub Pages
+### 1. Проверить фактическую работу v40 на GitHub Pages
 
 Status: open
 Priority: high
@@ -12,15 +12,16 @@ Area: GitHub Pages / iPhone Safari / cache
 
 Что известно:
 
-- `index.html` уже подключает `webstable38-image-pipeline`.
+- `index.html` уже подключает `webstable40-fallback-visual-taxonomy`.
 - `v19-manual-more-steps.js` существует и подключён.
-- Текущая stable-точка — `webstable38-image-pipeline`.
+- Текущая stable-точка — `webstable40-fallback-visual-taxonomy`.
 - Cleanup commit `180e53e` удалил mismatched first image batch.
 - `recipe-images.json` сейчас должен оставаться с пустым `"recipes": {}`.
+- v40 улучшает только fallback visual taxonomy.
 
 Что проверить:
 
-1. Открывается ли `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable38-image-pipeline`.
+1. Открывается ли `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable40-fallback-visual-taxonomy`.
 2. Нет ли белого экрана.
 3. Не ломаются ли карточки рецептов.
 4. Работает ли fallback картинок.
@@ -86,6 +87,7 @@ Area: images / recipes / UI
 
 - Food-фото могут ломаться, становиться чёрными или не соответствовать рецепту.
 - v38 image pipeline должен показывать только проверенные mappings из `recipe-images.json`.
+- v40 fallback taxonomy не заменяет реальные фото и не добавляет mappings.
 - Если картинка не соответствует title, mapping лучше удалить и вернуть рецепт на fallback.
 - `assets/` не является runtime-папкой и не должен попадать в commit.
 - Runtime image paths не должны указывать на `assets/`.

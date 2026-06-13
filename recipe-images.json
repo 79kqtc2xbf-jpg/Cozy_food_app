@@ -1,5 +1,5 @@
 {
-  "version": "webstable38-image-pipeline",
+  "version": "webstable40-fallback-visual-taxonomy",
   "basePath": "images/recipes/",
   "format": "webp",
   "recipes": {},

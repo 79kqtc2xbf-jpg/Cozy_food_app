@@ -8,22 +8,24 @@
 
 Current state:
 
-- `webstable38-image-pipeline` остаётся текущей stable-точкой.
+- `webstable40-fallback-visual-taxonomy` является текущей stable-точкой runtime fallback-визуалов.
+- v38 image pipeline остаётся механизмом будущих real-image mappings.
 - Первый image batch признан mismatch по title QA и удалён cleanup commit `180e53e`.
 - `recipe-images.json` должен оставаться с `"recipes": {}`, пока нет проверенных соответствий.
 - `assets/` не является runtime-папкой и не должен попадать в commit.
 - Runtime image paths не должны указывать на `assets/`.
 - Fallback подтверждён рабочим, broken loaded images: `0`.
+- v40 улучшает только fallback taxonomy, без реальных изображений.
 
 Дальше безопасно делать только одно из двух:
 
 1. Ручная visual QA будущих food photos до добавления mappings.
 2. Отдельный controlled image pipeline patch с маленьким проверенным batch.
 
-### 1. Проверить stable v38 после публикации
+### 1. Проверить stable v40 после публикации
 
 URL:
-`https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable38-image-pipeline`
+`https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable40-fallback-visual-taxonomy`
 
 Проверить:
 
@@ -36,10 +38,11 @@ URL:
 7. «Дома» ставит точные совпадения выше и честно показывает отсутствие совпадений для `творог, молоко`.
 8. Рандом работает.
 9. Очищенная база содержит 1000 рецептов, а первые 30 карточек следуют featured-порядку v37.
-10. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
+10. `document.body.dataset.cozyImageLayer` равен `webstable40-fallback-visual-taxonomy`.
 11. `recipe-images.json` не содержит непроверенных mappings.
 12. Fallback работает, broken loaded images: `0`.
-13. На iPhone Safari не отдаётся старая версия.
+13. Fallback-визуалы точнее для омлета, творожной миски, овсянки, риса, гречки, лаваша, пасты, пельменей, картофельного пюре и чечевичной похлёбки.
+14. На iPhone Safari не отдаётся старая версия.
 
 ### 2. Проверить `index.html` после v38
 
@@ -64,16 +67,16 @@ URL:
 
 ## Текущий технический патч
 
-### v38-image-pipeline
+### v40-fallback-visual-taxonomy
 
-Цель: подключить image pipeline поверх v37 без редактирования исходного JSON, стилей, приложения и изображений.
+Цель: улучшить fallback-визуалы поверх v38 image pipeline без добавления реальных изображений.
 
 Что проверить после публикации:
 
 1. Приложение открывается.
 2. База остаётся на 1000 рецептов.
 3. Featured-порядок главной v37 сохраняется.
-4. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
+4. `document.body.dataset.cozyImageLayer` равен `webstable40-fallback-visual-taxonomy`.
 5. Непроверенных mappings нет, fallback не ломается.
 6. Отсутствие изменений в базе, ядре, стилях и изображениях.
 

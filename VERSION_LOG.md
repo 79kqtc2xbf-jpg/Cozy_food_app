@@ -4,9 +4,57 @@
 
 ## Текущая рабочая точка
 
-- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable38-image-pipeline`
-- Current version label: `webstable38-image-pipeline`
-- Status: v38 image pipeline connected; cleanup QA passed after removing mismatched first image batch
+- Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable40-fallback-visual-taxonomy`
+- Current version label: `webstable40-fallback-visual-taxonomy`
+- Status: v40 fallback visual taxonomy connected; no real recipe image mappings yet
+
+---
+
+## webstable40-fallback-visual-taxonomy
+
+Date: 2026-06-14
+Status: runtime fallback taxonomy patch
+Type: fallback image classification / no real images
+
+### Что изменено
+
+- Улучшена классификация fallback-визуалов в `v38-recipe-images-loader.js`.
+- Real-image mappings сохранены на будущее: `recipe-images.json` по-прежнему может переопределять fallback через `images/recipes/...`.
+- `index.html` поднят на query version `webstable40-fallback-visual-taxonomy`.
+- Реальные изображения не добавлялись.
+- `assets/` не создавался и не добавлялся.
+- Рецептурные JSON-базы не менялись.
+- `app.js` и `styles.css` не менялись.
+
+### Новая fallback taxonomy
+
+- Яйца и омлеты: `🍳`
+- Овсянка и каши: `🥣`
+- Творожные блюда, сырники и оладьи: `🥞`
+- Ягоды: `🍓`
+- Рис: `🍚`
+- Гречка с грибами: `🍄`
+- Лаваш/wrap: `🌯`
+- Пельмени/вареники: `🥟`
+- Паста/макароны/лапша: `🍝`
+- Супы/похлёбки: `🥣`
+- Картофель/пюре: `🥔`
+- Курица: `🍗`
+- Рыба/тунец/лосось: `🐟`
+- Салаты: `🥗`
+- Бобовые: `🫘`
+- Десерты: `🍰`
+- Бутерброды/тосты: `🥪`
+- Сырные блюда без более точного типа: `🧀`
+
+### Проверить
+
+1. Приложение открывается.
+2. Загружается 1000 рецептов.
+3. `document.body.dataset.cozyImageLayer` равен `webstable40-fallback-visual-taxonomy`.
+4. `recipe-images.json` остаётся с `0` mappings.
+5. Fallback-визуалы стали точнее для первых featured-рецептов.
+6. Broken loaded images: `0`.
 
 ---
 

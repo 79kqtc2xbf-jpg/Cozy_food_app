@@ -74,7 +74,8 @@
 9. Runtime image paths не указывают на `assets/`.
 10. `assets/` не добавлен в commit.
 11. Broken loaded images: `0`.
-12. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
+12. `document.body.dataset.cozyImageLayer` равен текущему stable label, например `webstable40-fallback-visual-taxonomy`.
+13. Fallback-визуалы точнее для омлета, овсянки, риса, гречки, лаваша, пасты, пельменей, картофеля и супов.
 
 ## 7. iPhone Safari
 
