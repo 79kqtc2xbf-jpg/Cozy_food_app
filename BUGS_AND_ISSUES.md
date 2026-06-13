@@ -4,7 +4,7 @@
 
 ## Current known risks
 
-### 1. Проверить фактическую работу v33 на GitHub Pages
+### 1. Проверить фактическую работу v38 на GitHub Pages
 
 Status: open
 Priority: high
@@ -12,13 +12,15 @@ Area: GitHub Pages / iPhone Safari / cache
 
 Что известно:
 
-- `index.html` уже подключает `webstable33-photo-stability-cleanup`.
+- `index.html` уже подключает `webstable38-image-pipeline`.
 - `v19-manual-more-steps.js` существует и подключён.
-- Текущая рабочая точка — v33, а не v18/v19.
+- Текущая stable-точка — `webstable38-image-pipeline`.
+- Cleanup commit `180e53e` удалил mismatched first image batch.
+- `recipe-images.json` сейчас должен оставаться с пустым `"recipes": {}`.
 
 Что проверить:
 
-1. Открывается ли `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable33-photo-stability-cleanup`.
+1. Открывается ли `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable38-image-pipeline`.
 2. Нет ли белого экрана.
 3. Не ломаются ли карточки рецептов.
 4. Работает ли fallback картинок.
@@ -83,7 +85,10 @@ Area: images / recipes / UI
 Риск:
 
 - Food-фото могут ломаться, становиться чёрными или не соответствовать рецепту.
-- v33 откатывает плохие stock-фото в cozy fallback.
+- v38 image pipeline должен показывать только проверенные mappings из `recipe-images.json`.
+- Если картинка не соответствует title, mapping лучше удалить и вернуть рецепт на fallback.
+- `assets/` не является runtime-папкой и не должен попадать в commit.
+- Runtime image paths не должны указывать на `assets/`.
 - В текущем tech project не генерировать изображения без явного разрешения.
 
 Что можно делать технически:
@@ -91,6 +96,7 @@ Area: images / recipes / UI
 - чинить fallback;
 - чинить привязку уже существующих URL;
 - проверять загрузку изображений;
+- проводить ручной visual QA будущих food photos до добавления mappings;
 - не менять визуальный стиль без перехода в Product Chef.
 
 ---

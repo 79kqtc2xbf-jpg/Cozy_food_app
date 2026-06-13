@@ -4,15 +4,21 @@
 
 ## Срочно
 
-### 0. Подготовить первые image assets через v39 tooling
+### 0. Следующий безопасный шаг для изображений
 
-1. Сгенерировать clean collage без подписей, labels, watermark и рук.
-2. Сохранить коллаж в `assets/collages/featured_batch_01.png`.
-3. Нарезать через `scripts/slice_recipe_collage.py` в `images/recipes/`.
-4. Обновить `recipe-images.json` через `scripts/update_recipe_image_manifest.py`.
-5. Проверить локально первые 20 картинок.
-6. Убедиться, что остальные рецепты остаются на fallback и не ломаются.
-7. После проверки сделать отдельный commit только с `.webp` ассетами и `recipe-images.json`.
+Current state:
+
+- `webstable38-image-pipeline` остаётся текущей stable-точкой.
+- Первый image batch признан mismatch по title QA и удалён cleanup commit `180e53e`.
+- `recipe-images.json` должен оставаться с `"recipes": {}`, пока нет проверенных соответствий.
+- `assets/` не является runtime-папкой и не должен попадать в commit.
+- Runtime image paths не должны указывать на `assets/`.
+- Fallback подтверждён рабочим, broken loaded images: `0`.
+
+Дальше безопасно делать только одно из двух:
+
+1. Ручная visual QA будущих food photos до добавления mappings.
+2. Отдельный controlled image pipeline patch с маленьким проверенным batch.
 
 ### 1. Проверить stable v38 после публикации
 
@@ -31,8 +37,9 @@ URL:
 8. Рандом работает.
 9. Очищенная база содержит 1000 рецептов, а первые 30 карточек следуют featured-порядку v37.
 10. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
-11. Картинок пока нет, но fallback не ломается.
-12. На iPhone Safari не отдаётся старая версия.
+11. `recipe-images.json` не содержит непроверенных mappings.
+12. Fallback работает, broken loaded images: `0`.
+13. На iPhone Safari не отдаётся старая версия.
 
 ### 2. Проверить `index.html` после v38
 
@@ -67,7 +74,7 @@ URL:
 2. База остаётся на 1000 рецептов.
 3. Featured-порядок главной v37 сохраняется.
 4. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
-5. Картинок пока нет, но fallback не ломается.
+5. Непроверенных mappings нет, fallback не ломается.
 6. Отсутствие изменений в базе, ядре, стилях и изображениях.
 
 ## После QA v36

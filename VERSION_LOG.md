@@ -6,7 +6,40 @@
 
 - Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable38-image-pipeline`
 - Current version label: `webstable38-image-pipeline`
-- Status: v38 image pipeline connected; fallback verified, images not populated yet
+- Status: v38 image pipeline connected; cleanup QA passed after removing mismatched first image batch
+
+---
+
+## webstable38-image-pipeline cleanup QA
+
+Date: 2026-06-13
+Status: stable cleanup confirmed
+Commit: `180e53e chore: remove mismatched recipe image assets`
+Type: image asset cleanup / QA status
+
+### Что подтверждено
+
+- `webstable38-image-pipeline` остаётся текущей stable-точкой web image pipeline.
+- Неудачный первый image batch был удалён из runtime: `recipe-images.json` снова содержит `"recipes": {}`.
+- Commit `180e53e` удалил 20 mismatched `.webp` из `images/recipes/`.
+- `assets/` не является runtime-папкой приложения и не должен попадать в commit.
+- Runtime image paths не должны указывать на `assets/`.
+- Fallback-поведение подтверждено рабочим.
+- QA прошёл с `0` broken loaded images.
+
+### Проверено
+
+1. Приложение открывается.
+2. Загружается 1000 рецептов.
+3. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
+4. `recipe-images.json` валиден и не содержит mappings на неутверждённые картинки.
+5. Первые карточки используют fallback, без битых загруженных изображений.
+6. Runtime-ссылок на `assets/` нет.
+
+### Следующий безопасный шаг
+
+- Либо ручная visual QA будущих food photos до добавления mappings.
+- Либо отдельный controlled image pipeline patch с маленьким проверенным batch.
 
 ---
 

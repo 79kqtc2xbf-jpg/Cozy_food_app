@@ -70,6 +70,11 @@
 5. Нет старого битого image URL в первых карточках.
 6. Омлет не выглядит как паста.
 7. Суп не выглядит как десерт.
+8. `recipe-images.json` не содержит mappings без ручной visual QA.
+9. Runtime image paths не указывают на `assets/`.
+10. `assets/` не добавлен в commit.
+11. Broken loaded images: `0`.
+12. `document.body.dataset.cozyImageLayer` равен `webstable38-image-pipeline`.
 
 ## 7. iPhone Safari
 
