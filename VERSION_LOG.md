@@ -6,14 +6,14 @@
 
 - Current stable check URL: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable40-fallback-visual-taxonomy`
 - Current version label: `webstable40-fallback-visual-taxonomy`
-- Status: v40 fallback visual taxonomy connected; no real recipe image mappings yet
+- Status: v40 fallback visual taxonomy accepted as current stable; no real recipe image mappings yet
 
 ---
 
 ## webstable40-fallback-visual-taxonomy
 
 Date: 2026-06-14
-Status: runtime fallback taxonomy patch
+Status: current stable fallback visual version
 Type: fallback image classification / no real images
 
 ### Что изменено
@@ -55,6 +55,16 @@ Type: fallback image classification / no real images
 4. `recipe-images.json` остаётся с `0` mappings.
 5. Fallback-визуалы стали точнее для первых featured-рецептов.
 6. Broken loaded images: `0`.
+
+### Стабилизация
+
+- v40 считается текущей stable-версией fallback-визуалов.
+- Real image mapping support остаётся доступным для будущих патчей.
+- При будущих real images `recipe-images.json` mappings должны выигрывать у fallback taxonomy.
+- Следующий рекомендованный этап: `v41-top-recipes-visual-shortlist`.
+- v41 не должен быть bulk image replacement; это controlled shortlist для 20–30 top recipes.
+- Любые будущие food images должны пройти title-level visual QA до добавления mapping.
+- Не генерировать изображения, пока Лиса явно не попросит генерацию.
 
 ---
 

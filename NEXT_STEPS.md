@@ -19,8 +19,16 @@ Current state:
 
 Дальше безопасно делать только одно из двух:
 
-1. Ручная visual QA будущих food photos до добавления mappings.
-2. Отдельный controlled image pipeline patch с маленьким проверенным batch.
+1. `v41-top-recipes-visual-shortlist`: controlled shortlist для 20–30 top recipes.
+2. Ручная title-level visual QA будущих food photos до добавления mappings.
+3. Отдельный controlled image pipeline patch с маленьким проверенным batch.
+
+Не делать:
+
+- bulk image replacement;
+- image generation без явной просьбы Лисы;
+- mappings без title-level visual QA;
+- runtime paths на `assets/`.
 
 ### 1. Проверить stable v40 после публикации
 
@@ -44,11 +52,11 @@ URL:
 13. Fallback-визуалы точнее для омлета, творожной миски, овсянки, риса, гречки, лаваша, пасты, пельменей, картофельного пюре и чечевичной похлёбки.
 14. На iPhone Safari не отдаётся старая версия.
 
-### 2. Проверить `index.html` после v38
+### 2. Проверить `index.html` после v40
 
 Уже подтверждено:
 
-- `index.html` подключает `webstable38-image-pipeline`.
+- `index.html` подключает `webstable40-fallback-visual-taxonomy`.
 - `recipes-v34-1000.json` сохранён как technical checkpoint.
 - `recipes-v36-cleaned.json` создан отдельным файлом.
 - `recipes-v36-cleaned.json`, `app.js`, `styles.css` и изображения не трогали.
@@ -56,7 +64,7 @@ URL:
 - `v19-manual-more-steps.js` подключён.
 - `v37-featured-content-polish.js` подключён после `v35-performance-helpers.js`.
 - `v38-recipe-images-loader.js` подключён сразу после `v37-featured-content-polish.js`.
-- Текущая stable-точка — v38 image pipeline.
+- Текущая stable-точка — v40 fallback visual taxonomy поверх v38 image pipeline.
 
 Дополнительно проверить:
 
@@ -79,6 +87,20 @@ URL:
 4. `document.body.dataset.cozyImageLayer` равен `webstable40-fallback-visual-taxonomy`.
 5. Непроверенных mappings нет, fallback не ломается.
 6. Отсутствие изменений в базе, ядре, стилях и изображениях.
+
+## Следующий плановый этап
+
+### v41-top-recipes-visual-shortlist
+
+Цель: подготовить controlled visual shortlist для 20–30 top recipes без добавления изображений на первом шаге.
+
+Правила:
+
+1. Не делать bulk image replacement.
+2. Не генерировать изображения без явной просьбы Лисы.
+3. Не добавлять mappings без title-level visual QA.
+4. Не использовать `assets/` как runtime path.
+5. Сначала согласовать shortlist, потом делать отдельный image patch.
 
 ## После QA v36
 

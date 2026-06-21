@@ -88,10 +88,12 @@ Area: images / recipes / UI
 - Food-фото могут ломаться, становиться чёрными или не соответствовать рецепту.
 - v38 image pipeline должен показывать только проверенные mappings из `recipe-images.json`.
 - v40 fallback taxonomy не заменяет реальные фото и не добавляет mappings.
+- Real image mappings в `recipe-images.json` должны выигрывать у fallback taxonomy, когда появятся проверенные изображения.
 - Если картинка не соответствует title, mapping лучше удалить и вернуть рецепт на fallback.
 - `assets/` не является runtime-папкой и не должен попадать в commit.
 - Runtime image paths не должны указывать на `assets/`.
 - В текущем tech project не генерировать изображения без явного разрешения.
+- Следующий безопасный этап — `v41-top-recipes-visual-shortlist`, не bulk image replacement.
 
 Что можно делать технически:
 
@@ -99,6 +101,7 @@ Area: images / recipes / UI
 - чинить привязку уже существующих URL;
 - проверять загрузку изображений;
 - проводить ручной visual QA будущих food photos до добавления mappings;
+- готовить controlled shortlist для 20–30 top recipes;
 - не менять визуальный стиль без перехода в Product Chef.
 
 ---

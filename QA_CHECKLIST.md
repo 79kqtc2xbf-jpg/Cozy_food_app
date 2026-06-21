@@ -76,6 +76,9 @@
 11. Broken loaded images: `0`.
 12. `document.body.dataset.cozyImageLayer` равен текущему stable label, например `webstable40-fallback-visual-taxonomy`.
 13. Fallback-визуалы точнее для омлета, овсянки, риса, гречки, лаваша, пасты, пельменей, картофеля и супов.
+14. Если real image mapping существует, он выигрывает у fallback taxonomy.
+15. Любой новый food image прошёл title-level visual QA до mapping.
+16. Нет bulk image replacement без отдельного controlled patch.
 
 ## 7. iPhone Safari
 
