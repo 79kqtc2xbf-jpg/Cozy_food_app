@@ -10,6 +10,45 @@
 
 ---
 
+## v41-top-recipes-visual-shortlist
+
+Date: 2026-06-21
+Status: planning/data audit patch
+Type: visual planning / no images
+
+### Что изменено
+
+- Добавлен `VISUAL_SHORTLIST.md` с controlled shortlist для будущего первого real-photo batch.
+- Shortlist содержит 28 top-priority recipe IDs and titles from `recipes-v36-cleaned.json`.
+- Для каждого рецепта описаны visual direction, acceptable image и wrong/mismatched image.
+- Рецепты разделены на priority groups: hero / high / later.
+- Зафиксировано, что v41 не добавляет изображения, не генерирует изображения, не добавляет remote URLs и не создаёт `assets/`.
+- Зафиксировано, что `recipe-images.json` не должен получать mappings до title-level visual QA.
+
+### Затронутые файлы
+
+- `VISUAL_SHORTLIST.md`
+- `VERSION_LOG.md`
+- `STATUS_TRACKER.md`
+- `NEXT_STEPS.md`
+- `QA_CHECKLIST.md`
+
+### Не менялось
+
+- Runtime image logic.
+- Recipe content.
+- `recipe-images.json` mappings.
+- Real image files.
+- `assets/`.
+
+### Следующий безопасный шаг
+
+- Провести ручную visual QA кандидатов из `VISUAL_SHORTLIST.md`.
+- После явного решения Лисы сделать отдельный small image patch только для проверенных изображений.
+- Не делать bulk image replacement.
+
+---
+
 ## webstable40-fallback-visual-taxonomy
 
 Date: 2026-06-14

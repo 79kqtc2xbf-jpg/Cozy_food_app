@@ -94,6 +94,14 @@ URL:
 
 Цель: подготовить controlled visual shortlist для 20–30 top recipes без добавления изображений на первом шаге.
 
+Status: prepared in `VISUAL_SHORTLIST.md`.
+
+Shortlist:
+
+- 28 recipe IDs from `recipes-v36-cleaned.json`.
+- Priority groups: hero / high / later.
+- Includes acceptable and wrong/mismatched visual criteria for each recipe.
+
 Правила:
 
 1. Не делать bulk image replacement.
@@ -101,6 +109,21 @@ URL:
 3. Не добавлять mappings без title-level visual QA.
 4. Не использовать `assets/` как runtime path.
 5. Сначала согласовать shortlist, потом делать отдельный image patch.
+
+Hero candidates:
+
+1. `v34_0001` — Омлет с сыром и зеленью на каждый день.
+2. `v34_0002` — Творожная миска с ягодами без суеты.
+3. `v34_0004` — Овсянка с бананом по-домашнему.
+4. `v34_0010` — Лаваш с сыром и томатами свежая версия.
+5. `v34_0244` — Чечевичная похлёбка к ужину.
+
+Следующий патч:
+
+- Только отдельный small verified image patch.
+- Только после title-level visual QA.
+- Без `assets/`.
+- Без image generation, если Лиса явно не попросит генерацию.
 
 ## После QA v36
 

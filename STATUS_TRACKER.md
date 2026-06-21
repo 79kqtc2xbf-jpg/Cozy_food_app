@@ -7,6 +7,7 @@
 - Stable label: `webstable40-fallback-visual-taxonomy`
 - Latest runtime patch on main: `webstable40-fallback-visual-taxonomy`
 - Stable status: accepted
+- Latest planning patch: `v41-top-recipes-visual-shortlist`
 - Cleanup commit: `180e53e chore: remove mismatched recipe image assets`
 - Test link: `https://79kqtc2xbf-jpg.github.io/Cozy_food_app/?v=webstable40-fallback-visual-taxonomy`
 
@@ -34,6 +35,8 @@
 ## Next Safe Step
 
 - `v41-top-recipes-visual-shortlist`.
-- Подготовить controlled shortlist для 20–30 top recipes.
+- Controlled shortlist подготовлен в `VISUAL_SHORTLIST.md`.
+- Shortlist содержит 28 top-priority recipes, сгруппированных как hero / high / later.
 - Не делать bulk image replacement.
 - Любые будущие food images должны пройти title-level visual QA до mapping.
+- Следующий image patch делать отдельно и только после явного решения Лисы.

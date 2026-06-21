@@ -79,6 +79,8 @@
 14. Если real image mapping существует, он выигрывает у fallback taxonomy.
 15. Любой новый food image прошёл title-level visual QA до mapping.
 16. Нет bulk image replacement без отдельного controlled patch.
+17. Для будущего first image batch recipe ID есть в `VISUAL_SHORTLIST.md` или отдельно согласован Лисой.
+18. Visual direction, acceptable image и wrong/mismatched image сверены до mapping.
 
 ## 7. iPhone Safari
 
